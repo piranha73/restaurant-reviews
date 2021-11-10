@@ -17,3 +17,15 @@
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+<%= link_to 'Leave a Review', new_restaurant_review_path(@restaurant) %>
+
+<div style="background-color: lightgray; margin-top: 10px; padding: 2em;">
+  <h3>Reviews</h3>
+  <% @restaurant.reviews.each do |review| %>
+    <p><%= review.content %></p>
+    <%= link_to 'delete review',
+        review_path(review),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+<% end %>
+</div>
